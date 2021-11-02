@@ -1,12 +1,13 @@
-#include "producer.h"
+#include "Producer.h"
 
+template<class T>
+Producer<T>::Producer(Buffer<T>& buf){
 
-Producer<class T>::Producer(Buffer& buf){
-
-    m_buffer = //Typ des Buffers setzen
+    m_buffer = buf;
 }
 
-Producer<int>::~Producer(){
+template<class T>
+Producer<class T>::~Producer(){
 
 
 }

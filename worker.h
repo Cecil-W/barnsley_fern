@@ -1,4 +1,5 @@
 #include <thread>
+#include <iostream>
 
 class Worker{
 private:
@@ -9,8 +10,8 @@ private:
     void work();
 
 public:
-    Worker(/* args */);
-    ~Worker();
+    Worker(/* args */);//TODO
+    ~Worker();//TODO
     void start();
     void stop();
 
