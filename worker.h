@@ -5,6 +5,7 @@ private:
     std::thread m_thread;
     bool m_terminate = false;
     bool m_running = false;
+
     void work();
 
 public:
