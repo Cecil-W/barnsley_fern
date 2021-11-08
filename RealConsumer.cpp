@@ -63,9 +63,9 @@ void RealConsumer::create_png(){
     }
     std::cout << "done." << std::endl;
     
-    std::cout << "displaying image" << std::endl;
-    image.display("Test");
+    std::cout << "saving image" << std::endl;
+    //image.display("Test");
 
     
-    //image.save_png("fern.png");
+    image.save_png("fern.png");
 }
