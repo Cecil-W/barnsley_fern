@@ -48,11 +48,14 @@ void RealConsumer::create_png(){
 
 
     //creating a white image
-    std::cout << "creating image...";
+    std::cout << "creating Cimage...";
     using namespace cimg_library;
-    CImg<unsigned char> image(10000, 20000, 1, 3, 255);
+    CImg<unsigned char> image(10000, 20000, 1, 3, 250);
     std::cout << "done." << std::endl;
     
+    unsigned char green[] = {0, 250, 0};
+    image.draw_circle(5000, 10000, 4000, green, 1);
+
     //drawing every point
     std::cout << "starting to draw Points...";
     for (int i = 0; i < 10000; ++i) {
@@ -64,8 +67,8 @@ void RealConsumer::create_png(){
     std::cout << "done." << std::endl;
     
     std::cout << "saving image" << std::endl;
-    //image.display("Test");
+    image.display("Test");
 
     
-    image.save_png("fern.png");
+    //image.save_png("fern.png");
 }
