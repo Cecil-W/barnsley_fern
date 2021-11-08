@@ -17,7 +17,7 @@ int main(int argc, char const *argv[]){
     const int prod_count = 10;
     std::vector<RealProducer*> producers;
     for(int i = 0; i < prod_count; ++i){
-        producers.push_back(new RealProducer(buffer, 1000));
+        producers.push_back(new RealProducer(buffer, 1000000));
         producers.back()->start();
     }
     cout << "Producers started" << endl;

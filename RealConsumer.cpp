@@ -52,23 +52,22 @@ void RealConsumer::create_png(){
     using namespace cimg_library;
     CImg<unsigned char> image(10000, 20000, 1, 3, 250);
     std::cout << "done." << std::endl;
-    
-    unsigned char green[] = {0, 250, 0};
-    image.draw_circle(5000, 10000, 4000, green, 1);
 
     //drawing every point
     std::cout << "starting to draw Points...";
     for (int i = 0; i < 10000; ++i) {
         for (int j = 0; j < 20000; ++j) {
-            unsigned char color[] = {0, pic[i][j], 0};
-            image.draw_point(i, j, color);
+            if (pic[i][j] > 0){
+                unsigned char color[] = {0, pic[i][j], 0};
+                image.draw_point(i, j, color);
+            }
         }
     }
     std::cout << "done." << std::endl;
     
     std::cout << "saving image" << std::endl;
-    image.display("Test");
+    //image.display("Test");
 
     
-    //image.save_png("fern.png");
+    image.save_png("fern.png");
 }
