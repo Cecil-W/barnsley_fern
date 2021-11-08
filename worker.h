@@ -1,6 +1,7 @@
 #include <thread>
 #include <iostream>
 
+#pragma once
 class Worker{
 private:
     std::thread m_thread;
@@ -10,12 +11,12 @@ private:
     void work();
 
 public:
-    Worker(/* args */);//TODO
-    ~Worker();//TODO
+    Worker(/* args */);
+    ~Worker();
     void start();
     void stop();
 
 protected:
-    virtual bool step();
+    virtual bool step() = 0;
 
 };

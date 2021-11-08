@@ -9,6 +9,6 @@ if( ${CMAKE_BINARY_DIR} STREQUAL ${PROJECT_SOURCE_DIR} )
     Message( FATAL_ERROR "Source and build directories are identical!")
 endif()
 
-set(SRC_FILES main.cpp worker.cpp worker.h producer.cpp producer.h)
+set(SRC_FILES main.cpp Worker.cpp RealProducer.cpp RealConsumer.cpp)
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
