@@ -3,3 +3,6 @@ build/*
 .vscode
 .vs
 .idea
+
+# the created pngs are too large and need to be turned into jpg
+*.png
