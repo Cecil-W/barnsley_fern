@@ -2,14 +2,16 @@
 #include "Buffer.h"
 
 #pragma once
-template<class T>
+template<typename T>
 class Producer : public Worker{
 private:
     Buffer<T>& m_buffer;
     
 public:
     Producer(Buffer<T>& buf);
-    ~Producer();
+    Producer(Producer&& other);
+
+    ~Producer() = default;
 
 protected:
     bool step();
@@ -17,7 +19,7 @@ protected:
     
 };
 
-template<class T>
+template<typename T>
 bool Producer<T>::step(){
     T data;
     bool done = produce(data);
@@ -25,11 +27,11 @@ bool Producer<T>::step(){
     return done;
 }
 
-template<class T>
-Producer<T>::Producer(Buffer<T>& buf)
-: m_buffer(buf) {
+template<typename T>
+inline Producer<T>::Producer(Buffer<T>& buf) : m_buffer(buf) {
 }
 
-template<class T>
-Producer<T>::~Producer(){
+template<typename T>
+inline Producer<T>::Producer(Producer&& other) : m_buffer(other.m_buffer) {
 }
+

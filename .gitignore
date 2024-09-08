@@ -1,3 +1,5 @@
 *.user
 build/*
 .vscode
+.vs
+.idea

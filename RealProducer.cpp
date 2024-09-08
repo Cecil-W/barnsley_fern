@@ -1,13 +1,19 @@
 #include "RealProducer.h"
 
 
-RealProducer::RealProducer(Buffer<Point>& buf, int iteration_count)
-: Producer<Point>::Producer(buf){
-    max_iterations = iteration_count;
-    coord = Point();
+RealProducer::RealProducer(Buffer<Point> &buffer, int count) :
+    Producer<Point>::Producer(buffer),
+    max_iterations(count),
+    coord(Point()){
     //initializing the rngen
     gen = std::mt19937(rd());
     dist = std::uniform_int_distribution<>(1, 100);
+}
+
+RealProducer::RealProducer(RealProducer&& other) :
+    Producer(std::move(other))
+{
+
 }
 
 RealProducer::~RealProducer(){
@@ -49,3 +55,5 @@ bool RealProducer::produce(Point& point){
     }
 
 }
+
+

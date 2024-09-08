@@ -6,12 +6,14 @@
 #pragma once
 class RealConsumer : public Consumer<Point>{
 private:
-    std::mutex mute[10][10];
+    static std::mutex m_mutex[10][10];
     static unsigned char pic[10000][20000];
 
 public:
     RealConsumer(Buffer<Point>& buf);
-    ~RealConsumer();
+    RealConsumer(RealConsumer&& other) noexcept;
+
+
     void create_png();
 
 protected:

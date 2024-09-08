@@ -10,7 +10,7 @@ private:
 
 public:
     Consumer(Buffer<T>& buf);
-    ~Consumer();
+    Consumer(Consumer&& other) noexcept;
     
 protected:
     bool step();
@@ -33,7 +33,7 @@ bool Consumer<T>::step(){
     }
     catch(const std::runtime_error){
         //buffer is empty, every producer is done
-        //TODO std::runtime_error an main weiter geben damit main create_img aufrufen kann
+        // TODO std::runtime_error an main weiter geben damit main create_img aufrufen kann
         return true; 
     }
     
@@ -46,10 +46,11 @@ bool Consumer<T>::step(){
  * @tparam T 
  * @param buf buffer that this consumer consumes from
  */
-template<class T>
+template<typename T>
 Consumer<T>::Consumer(Buffer<T>& buf)
 : m_buffer(buf) {
 }
 
-template<class T>
-Consumer<T>::~Consumer(){}
+template<typename T>
+Consumer<T>::Consumer(Consumer &&other) noexcept : m_buffer(other.m_buffer) {
+}

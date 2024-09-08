@@ -14,31 +14,33 @@ int main(int argc, char const *argv[]){
     Buffer<Point> buffer(1000);
 
     //vector an RealProducern erstellen
-    const int prod_count = 10;
-    std::vector<RealProducer*> producers;
-    for(int i = 0; i < prod_count; ++i){
-        producers.push_back(new RealProducer(buffer, 1000000));
-        producers.back()->start();
+    const int producer_count = 10;
+    vector<RealProducer> producers;
+    producers.reserve(producer_count);
+    for(int i = 0; i < producer_count; ++i){
+        producers.emplace_back(buffer, 1000000);
+        producers.back().start();
     }
     cout << "Producers started" << endl;
 
     //vector an RealConsumern erstellen
     const int cons_count = 10;
-    vector<RealConsumer*> consumers(cons_count);
+    vector<RealConsumer> consumers;
+    consumers.reserve(cons_count);
     for(int i = 0; i < cons_count; ++i){
-        consumers.push_back(new RealConsumer(buffer));
-        consumers.back()->start();
+        consumers.emplace_back(buffer);
+        consumers.back().start();
     }
     cout << "Consumers started" << endl;
 
     //Warten/join bis alle Consumer fertig sind
     for(auto& t : producers){
-        t->stop();
+        t.stop();
     }
     cout << "Producers finished" << endl;
 
     //beim einem Consumer create_Img aufrufen
-    consumers.front()->create_png();
+    consumers.front().create_png();
 
 
 }

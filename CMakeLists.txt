@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 project(HA)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 set(CIMG_H_PATH ${PROJECT_SOURCE_DIR})
@@ -18,11 +18,11 @@ add_executable(${PROJECT_NAME} ${SRC_FILES})
 target_link_libraries(${PROJECT_NAME} pthread)
 
 # Just change the default value if you want to disable the interactive window based on X11 library
-option(YOU_NEED_X "Activates usage of X11 library"  ON)
+option(YOU_NEED_X "Activates usage of X11 library"  OFF)
 
 # Just change the default value if CImg should not use libpng but the default ImageMagick
 # (I had problems with ImageMagick, hence the alternative based on libpng)
-option(YOU_NEED_PNG "Activates usage of png library" ON)
+option(YOU_NEED_PNG "Activates usage of png library" OFF)
 
 if(${YOU_NEED_PNG})
     message(STATUS "Looking for libpng ...")
