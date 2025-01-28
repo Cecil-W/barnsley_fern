@@ -15,6 +15,13 @@ set(SRC_FILES main.cpp Worker.cpp RealProducer.cpp RealConsumer.cpp)
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 
+target_sources(${PROJECT_NAME} 
+    PRIVATE
+        main.cpp 
+        Worker.cpp 
+        RealProducer.cpp 
+        RealConsumer.cpp)
+
 target_link_libraries(${PROJECT_NAME} pthread)
 
 # Just change the default value if you want to disable the interactive window based on X11 library

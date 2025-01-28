@@ -24,11 +24,20 @@ void Worker::work(){
     m_terminate = false;
 }
 
+Worker::Worker(Worker &&other) : m_thread(std::move(other.m_thread)) {}
+
+Worker &Worker::operator=(Worker &&other) {
+    if (this != &other) {
+        m_thread = std::move(other.m_thread);   
+    }    
+    return *this;
+};
+
 /**
  * @brief Starts the thread
  * 
  */
-void Worker::start(){
+void Worker::start() {
     if(m_running){
         std::cout << "Thread already running!" << std::endl;
     } else {

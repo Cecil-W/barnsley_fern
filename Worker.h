@@ -13,6 +13,10 @@ private:
 public:
     Worker(/* args */);
     ~Worker();
+    Worker(const Worker& other) = delete;
+    Worker& operator=(const Worker& other) = delete;
+    Worker(Worker&& other);
+    Worker& operator=(Worker&& other);
     void start();
     void stop();
 

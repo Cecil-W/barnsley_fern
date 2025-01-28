@@ -1,8 +1,9 @@
 *.user
-build/*
+build/
 .vscode
 .vs
 .idea
+.cache
 
 # the created pngs are too large and need to be turned into jpg
 *.png
